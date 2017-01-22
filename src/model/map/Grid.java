@@ -1,5 +1,7 @@
 package model.map;
 
+import model.map.generation.MapGenerator;
+
 public class Grid {
 
 	private Tile[][] content;
@@ -10,22 +12,10 @@ public class Grid {
 		content = new Tile[width][height];
 		this.width = width;
 		this.height = height;
-
-		generateContent();
+		
+		MapGenerator.createContent(this);
 	}
-
-	public void generateContent() {
-		for (int x = 0; x < getWidth(); x++) {
-			for (int y = 0; y < getHeight(); y++) {
-				content[x][y] = new Tile();
-			}
-		}
-	}
-
-	public Tile[][] getContent() {
-		return content;
-	}
-
+	
 	public int getWidth() {
 		return width;
 	}
@@ -38,4 +28,8 @@ public class Grid {
 		return content[x][y];
 	}
 	
+	public void setTile(int x, int y, Tile tile){
+		content[x][y] = tile;
+	}
+
 }

@@ -23,7 +23,7 @@ public class View extends JFrame implements Observer {
 		mainPanel = new GamePanel(model);
 		add(mainPanel, BorderLayout.CENTER);
 		
-		mainPanel.setPreferredSize(new Dimension(800, 800));
+		mainPanel.setPreferredSize(new Dimension(1000, 1000));
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pack();

@@ -6,10 +6,12 @@ import model.map.Grid;
 
 public class Model extends Observable {
 
+	private final int WIDTH = 100;
+	private final int HEIGHT = 100;
 	private Grid grid;
 
 	public Model() {
-		grid = new Grid(10, 10);
+		grid = new Grid(WIDTH, HEIGHT);
 	}
 	
 	public Grid getGrid() {

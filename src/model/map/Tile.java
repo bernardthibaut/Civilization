@@ -5,11 +5,11 @@ import model.map.terrain.Terrain;
 public class Tile {
 
 	private Terrain terrain;
-
-	public Tile() {
-		terrain = Terrain.createRandomTerrain();
+	
+	public Tile(Terrain terrain){
+		this.terrain = terrain;
 	}
-
+	
 	public Terrain getTerrain() {
 		return terrain;
 	}
