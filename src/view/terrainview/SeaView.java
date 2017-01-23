@@ -1,12 +1,12 @@
 package view.terrainview;
 
-import java.awt.Color;
+import javax.swing.ImageIcon;
 
-public class SeaView extends TerrainView{
+public class SeaView extends TerrainView {
 
 	@Override
-	public Color getColor() {
-		return Color.blue;
+	public ImageIcon getImageIcon() {
+		return new ImageIcon("res/terrain/sea.png");
 	}
 
 }

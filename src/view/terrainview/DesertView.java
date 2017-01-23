@@ -1,12 +1,12 @@
 package view.terrainview;
 
-import java.awt.Color;
+import javax.swing.ImageIcon;
 
 public class DesertView extends LandView{
 
 	@Override
-	public Color getColor() {
-		return Color.yellow;
+	public ImageIcon getImageIcon() {
+		return new ImageIcon("res/terrain/desert.png");
 	}
 
 }

@@ -1,12 +1,12 @@
 package view.terrainview;
 
-import java.awt.Color;
+import javax.swing.ImageIcon;
 
 public class GrasslandView extends LandView{
 
 	@Override
-	public Color getColor() {
-		return Color.green;
+	public ImageIcon getImageIcon() {
+		return new ImageIcon("res/terrain/grassland.png");
 	}
 
 }

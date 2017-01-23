@@ -10,4 +10,9 @@ public class Sea extends Terrain{
 		return new SeaView();
 	}
 
+	@Override
+	public boolean isLand() {
+		return false;
+	}
+
 }

@@ -11,20 +11,21 @@ import model.map.terrain.land.Desert;
 import model.map.terrain.land.Grassland;
 import model.map.terrain.land.Land;
 import model.map.terrain.land.Snow;
+import model.map.terrain.land.feature.Hills;
+import model.map.terrain.land.feature.Mountain;
 
 public abstract class MapGenerator {
 
 	public static void createContent(Grid grid) {
 		ArrayList<Point> centerPoints = initCenterPoints(grid);
 		initTiles(grid, centerPoints);
+		addRandomFeatures(grid);
 	}
 
 	private static ArrayList<Point> initCenterPoints(Grid grid) {
 		ArrayList<Point> centerPoints = new ArrayList<Point>();
 		int totalTiles = grid.getHeight() * grid.getWidth();
 		int nbCenterPoints = totalTiles / Math.min(grid.getHeight(), grid.getWidth());
-
-		System.out.println(nbCenterPoints);
 
 		Random r = new Random();
 		for (int i = 0; i < nbCenterPoints; i++) {
@@ -98,6 +99,43 @@ public abstract class MapGenerator {
 			break;
 		}
 
+	}
+
+	private static void addRandomFeatures(Grid grid) {
+		Random r = new Random();
+		for (int x = 0; x < grid.getWidth(); x++) {
+			for (int y = 0; y < grid.getHeight(); y++) {
+				if (grid.getTile(x, y).getTerrain().isLand()) {
+					int randomInt = r.nextInt(100);
+					if(randomInt < 25){
+						Land land = (Land) grid.getTile(x, y).getTerrain();
+						grid.setTile(x, y, new Tile(new Hills(land)));
+					} else if (getNbLandNeighbors(grid, x, y) == 4 && randomInt < 60){
+						Land land = (Land) grid.getTile(x, y).getTerrain();
+						grid.setTile(x, y, new Tile(new Mountain(land)));
+					}
+				}
+			}
+		}
+	}
+
+	private static boolean isInBounds(Grid grid, int x, int y) {
+		return (x >= 0 && x < grid.getWidth() && y >= 0 && y < grid.getHeight());
+	}
+
+	private static int getNbLandNeighbors(Grid grid, int x, int y) {
+		int nbLandNeighbors = 0;
+
+		if (isInBounds(grid, x - 1, y) && grid.getTile(x - 1, y).getTerrain().isLand())
+			nbLandNeighbors++;
+		if (isInBounds(grid, x + 1, y) && grid.getTile(x + 1, y).getTerrain().isLand())
+			nbLandNeighbors++;
+		if (isInBounds(grid, x, y - 1) && grid.getTile(x, y - 1).getTerrain().isLand())
+			nbLandNeighbors++;
+		if (isInBounds(grid, x, y + 1) && grid.getTile(x, y + 1).getTerrain().isLand())
+			nbLandNeighbors++;
+		
+		return nbLandNeighbors;
 	}
 
 }

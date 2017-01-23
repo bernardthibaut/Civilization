@@ -1,6 +1,5 @@
 package view.terrainview.featureview;
 
-import java.awt.Color;
 import java.awt.Graphics;
 
 import model.map.terrain.land.Land;
@@ -16,16 +15,9 @@ public abstract class LandWithFeatureView extends LandView{
 	}
 	
 	@Override
-	public Color getColor() {
-		return landView.getColor();
-	}
-	
-	public abstract void paintFeature(Graphics g, int x, int y, int width, int height);
-	
-	@Override
 	public void paint(Graphics g, int x, int y, int width, int height) {
 		landView.paint(g, x, y, width, height);
-		paintFeature(g, x, y, width, height);
+		g.drawImage(image.getImage(), x, y, width, height, null);
 	}
 	
 }

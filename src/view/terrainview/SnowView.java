@@ -1,12 +1,12 @@
 package view.terrainview;
 
-import java.awt.Color;
+import javax.swing.ImageIcon;
 
-public class SnowView extends LandView{
+public class SnowView extends LandView {
 
 	@Override
-	public Color getColor() {
-		return Color.white;
+	public ImageIcon getImageIcon() {
+		return new ImageIcon("res/terrain/snow.png");
 	}
 
 }

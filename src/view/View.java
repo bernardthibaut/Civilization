@@ -24,7 +24,8 @@ public class View extends JFrame implements Observer {
 		add(mainPanel, BorderLayout.CENTER);
 		
 		mainPanel.setPreferredSize(new Dimension(1000, 1000));
-		
+
+		setTitle("Civilization");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pack();
 		setLocationRelativeTo(null);

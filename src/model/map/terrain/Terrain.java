@@ -6,4 +6,6 @@ public abstract class Terrain {
 
 	public abstract TerrainView createView();
 
+	public abstract boolean isLand();
+	
 }

@@ -6,8 +6,8 @@ import model.map.Grid;
 
 public class Model extends Observable {
 
-	private final int WIDTH = 100;
-	private final int HEIGHT = 100;
+	private final int WIDTH = 20;
+	private final int HEIGHT = 20;
 	private Grid grid;
 
 	public Model() {
